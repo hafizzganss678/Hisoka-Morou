@@ -1557,7 +1557,18 @@ break
                 let yts = require("yt-search")
                 let search = await yts(text)
                 let anu = search.videos[Math.floor(Math.random() * search.videos.length)]
-                let buttons = [
+                cap = `⭔ Title : ${anu.title}
+⭔ Ext : Search
+⭔ ID : ${anu.videoId}
+⭔ Duration : ${anu.timestamp}
+⭔ Viewers : ${anu.views}
+⭔ Upload At : ${anu.ago}
+⭔ Author : ${anu.author.name}
+⭔ Channel : ${anu.author.url}
+⭔ Description : ${anu.description}
+⭔ Url : ${anu.url}`
+
+              /*  let buttons = [
                     {buttonId: `ytmp3 ${anu.url}`, buttonText: {displayText: '♫ Audio'}, type: 1},
                     {buttonId: `ytmp4 ${anu.url}`, buttonText: {displayText: '► Video'}, type: 1}
                 ]
@@ -1578,8 +1589,42 @@ break
                     buttons: buttons,
                     headerType: 4
                 }
-                hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })
+                hisoka.sendMessage(m.chat, buttonMessage, { quoted: m })*/
+                
+                let message = await prepareWAMessageMedia({ image: fs.readFileSync('./lib/hisoka.jpg') }, { upload: hisoka.waUploadToServer })
+                const template = generateWAMessageFromContent(m.chat, proto.Message.fromObject({
+                    templateMessage: {
+                        hydratedTemplate: {
+                            imageMessage: message.imageMessage,
+                            hydratedContentText: cap,
+                            hydratedButtons: [{
+                                urlButton: {
+                                    displayText: 'WEBSITE YOUTUBE',
+                                    url: `${anu.url}`
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'AUDIO 🎧',
+                                    id: `ytmp3 ${anu.url}`
+                                }
+                            }, {
+                                quickReplyButton: {
+                                    displayText: 'VIDEO 🎥',
+                                    id: `ytmp4 ${anu.url}`
+                                }  
+                                }, {
+                                quickReplyButton: {
+                                    displayText: 'MORE ?',
+                                    id: `yts ${anu.title}`
+                                }  
+                                
+                            }]
+                        }
+                    }
+                }), { userJid: m.chat, quoted: m })
+                hisoka.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
+            
             break
 	    case 'ytmp3': case 'ytaudio': {
                 let { yta } = require('./lib/y2mate')
