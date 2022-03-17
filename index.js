@@ -35,7 +35,7 @@ async function startHisoka() {
     hisoka.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
-    /////////let pa7rick = await hisoka.sendContact(callerId, global.owner)
+    
    //////////////////// hisoka.sendMessage(callerId, { text: `Sistem otomatis block!\nJangan menelpon bot!\nSilahkan Hubungi Owner Untuk Dibuka !`}, { quoted : pa7rick })
   ////  await sleep(8000)
     //////await hisoka.updateBlockStatus(callerId, "block")
@@ -169,7 +169,7 @@ async function startHisoka() {
         }
         console.log('Connected...', update)
     })
-hisoka.sendMessage('status@broadcast', `Connect to WhatsApp Web✔️\n\n\n\n`, MessageType.text)
+
     hisoka.ev.on('creds.update', saveState)
 
     // Add Other
