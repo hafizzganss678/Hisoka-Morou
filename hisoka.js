@@ -2694,14 +2694,11 @@ break
  {
                 anu = `*MULTI DEVICE*
 
-*❍⃝⃘۪۪۪👤YourName* : *${pushname}*
-*❍⃝⃘۪۪۪👑Creator* : *@${NomorOwner}*
 *❍⃝⃘۪۪۪📨MyEmail* : *mhmmdsalah22@gmail.com*
 *❍⃝⃘۪۪۪❔Prefix* : *『 ${prefix} 』*
 *❍⃝⃘۪۪۪📌Online* : *ONLINE*
-*❍⃝⃘۪۪۪⏱️Ping* : *${latensi99ii}*
 *❍⃝⃘۪۪۪🔋Baterai*  : *Tidak terdeteksi*
-*❍⃝⃘۪۪۪🖥Platform* : *${os.platform()}*
+*❍⃝⃘۪۪۪🖥Platform* : *Linux*
 
 _⫹⫺🎯Library : Baileys-script_
 _⫹⫺🍰Version : 4.2.8_
